@@ -1,0 +1,31 @@
+---
+- name: jenkins setup for centos/rhel
+  hosts:  localhost
+  tasks:
+    - name: setup repos 
+      yum:  
+        name: wget
+        state:  present
+  
+    - name: downloading repos
+      shell:  wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo
+   
+    - name: 
+      shell:  rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    
+    - name: installing jenkins 
+      yum:
+        name: jenkins java-1.8.0-openjdk
+        state:  present 
+
+    - name:
+      firewalld:
+        service:  http
+        permanent:  yes
+        state:  enabled
+    
+    - name:   enabling ports
+      firewalld:
+        port: 8080/tcp
+        permanent:  yes
+        state:  enabled
