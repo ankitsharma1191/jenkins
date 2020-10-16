@@ -35,6 +35,4 @@
         port: 8080/tcp
         permanent:  yes
         state: enabled
-    - name: login details
-      command: cat /var/lib/jenkins/secrets/initialAdminPassword
-      command: echo "use this password"
+    
