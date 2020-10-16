@@ -20,15 +20,19 @@
         with_items:
         - jenkins
         - java-1.8.0-openjdk
-
+      
     - name:
       firewalld:
-        service:  http
+        service:  '{{ item }}'
         permanent:  yes
         state:  enabled
+      with_items:
+        - http
+        - jenkins
     
     - name:   enabling ports
       firewalld:
         port: 8080/tcp
         permanent:  yes
-        state:  enabled
+        state: enabled
+
