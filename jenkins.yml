@@ -15,8 +15,11 @@
     
     - name: installing jenkins 
       yum:
-        name: jenkins java-1.8.0-openjdk
+        name: '{{ item }}' 
         state:  present 
+        with_items:
+        - jenkins
+        - java-1.8.0-openjdk
 
     - name:
       firewalld:
