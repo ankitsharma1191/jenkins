@@ -35,4 +35,7 @@
         port: 8080/tcp
         permanent:  yes
         state: enabled
-    
+    -  name: starting jenkins
+       service:
+        state: started 
+        enable: yes   
