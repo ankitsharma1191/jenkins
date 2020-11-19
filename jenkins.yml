@@ -1,6 +1,6 @@
 ---
 - name: jenkins setup for centos/rhel
-  hosts:  localhost
+  hosts:  127.0.0.1
   tasks:
     - name: setup repos 
       yum:  
@@ -35,7 +35,8 @@
         port: 8080/tcp
         permanent:  yes
         state: enabled
-    -  name: starting jenkins
-       service:
+    - name: starting jenkins
+      service:
+        name: jenkins
         state: started 
         enable: yes   
